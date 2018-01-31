@@ -1,13 +1,81 @@
-<div class="container section">
-<div class="columns">
-    <div class="column">
-        First column
-    </div>
-    <div class="column">
-        Second column
-    </div>
-    <div class="column">
-            Third column column
+<div class="section">
+    <div class="pageloader" [ngClass]="!isLoaded ? 'is-active': ''"><span class="title">Getting Latest Data</span></div>
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <p-table #dt [columns]="cols" [value]="mutualFundList" [scrollable]="true" scrollHeight="500px" [globalFilterFields]="['schemaCode','schemaName','fundType','fundManager']">
+                 <ng-template pTemplate="caption">
+                   <div class="columns">
+                     <div class="column ">
+                    <div class="field">
+                            <div class="control has-icons-left has-icons-right">
+                              <input class="input is-small" type="text" size="50" pInputText placeholder="Global Search" (input)="dt.filterGlobal($event.target.value, 'contains')">
+                              <span class="icon is-small is-left">
+                                    <i class="fas fa-search"></i>
+                                  </span>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Fund Manager</th>
+                        <th>Nav</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-mf>
+                    <tr>
+                        <td>{{mf.schemaCode}}</td>
+                        <td>{{mf.schemaName}}</td>
+                        <td>{{mf.fundType}}</td>
+                        <td>{{mf.fundManager}}</td>
+                        <td>
+                            <span class="tag is-info">{{mf.nav}}</span>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
-</div>
+        <div class="column">
+                <div class="tile is-ancestor">
+                        <div class="tile is-vertical">
+                          <div class="tile">
+                            <div class="tile is-parent is-vertical">
+                              <article class="tile is-child notification is-primary">
+                                <p class="title">{{totalSize}}</p>
+                                <p class="subtitle">Total MF</p>
+                              </article>
+                              <article class="tile is-child notification is-warning">
+                                <p class="title">15</p>
+                                <p class="subtitle">Members</p>
+                              </article>
+                            </div>
+                            <div class="tile is-parent">
+                              <article class="tile is-child notification is-info">
+                                <div class="tags has-addons">
+                                        <span class="tag is-primary">Aditya Birla Sun</span>
+                                        <span class="tag is-warning">5.67</span>
+                                      </div>
+                                      <p class="title">Highest Nav</p>
+
+                              </article>
+                            </div>
+                          </div>
+                          <div class="tile is-parent">
+                            <article class="tile is-child notification is-danger">
+                              <p class="title">{{dateUpdated | date:'dd-MMM-yyyy'}}</p>
+                              <p class="subtitle">Last Updated</p>
+                              <div class="content">
+                                <!-- Content -->
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </div>
+
+        </div>
+    </div>
 </div>
