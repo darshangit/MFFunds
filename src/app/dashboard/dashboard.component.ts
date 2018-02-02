@@ -13,13 +13,16 @@ export class DashboardComponent implements OnInit {
     dateUpdated = Date.now();
     isLoaded = false;
 
-    constructor(private dashboardService: DashboardService) { }
+    constructor(private dashboardService: DashboardService) {
+        console.log('isLoaded', this.isLoaded);
+     }
 
     ngOnInit(): void {
         this.dashboardService.getMutualFundList().subscribe((resp) => {
+            this.isLoaded = true;
             this.mutualFundList = resp;
             this.totalSize = this.mutualFundList.length;
-            this.isLoaded = true;
+
         });
     }
 

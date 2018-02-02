@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { DashboardService } from './index-services';
-import { DashboardComponent, AppFooterComponent, HeroComponentComponent } from './index';
+import { DashboardComponent, AppFooterComponent, HeroComponentComponent, ComingSoonComponent } from './index';
 import { appRoutes } from './routes';
 import { HttpModule } from '@angular/http';
 import { TableModule } from 'primeng/table';
@@ -14,6 +14,7 @@ import { TableModule } from 'primeng/table';
     DashboardComponent,
     AppFooterComponent,
     HeroComponentComponent,
+    ComingSoonComponent
   ],
   imports: [
     BrowserModule,
